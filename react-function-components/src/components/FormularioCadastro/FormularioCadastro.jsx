@@ -6,19 +6,19 @@ function FormularioCadastro() {
     return (
         <form>
             <label>Nome</label>
-            <input type="text" />
+            <input type = "text" />
 
             <label>Sobrenome</label>
-            <input type="text" />
+            <input type = "text" />
 
             <label>CPF</label>
-            <input type="text" />
+            <input type = "text" />
 
             <label>Promoções</label>
-            <input type="checkbox" />
+            <input type = "checkbox" />
 
             <label>Novidades</label>
-            <input type="checkbox" />
+            <input type = "checkbox" />
 
             <Button 
                 type = "submit"
