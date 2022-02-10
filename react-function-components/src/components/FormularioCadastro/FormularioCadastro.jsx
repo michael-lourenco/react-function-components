@@ -6,13 +6,13 @@ function FormularioCadastro() {
     return (
         <form>
 
-            <TextField label = "Nome" variant = "outlined" id = "nome" fullWidth />
+            <TextField label = "Nome" variant = "outlined" id = "nome" margin = 'dense' fullWidth />
 
-            <TextField label = "Sobrenome" variant = "outlined" id = "sobrenome" fullWidth />
+            <TextField label = "Sobrenome" variant = "outlined" id = "sobrenome" margin = 'dense' fullWidth />
 
-            <TextField label = "CPF" variant = "outlined" id = "cpf" fullWidth />
+            <TextField label = "CPF" variant = "outlined" id = "cpf" margin = 'dense' fullWidth />
 
-            <Switch label = "Promoções" id = "promocoes" />
+            <Switch label = "Promoções" id = "promocoes"  />
 
             <Switch label = "Novidades" id = "novidades" />
 
