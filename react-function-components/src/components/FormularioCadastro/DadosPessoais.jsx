@@ -23,6 +23,7 @@ function DadosPessoais({ aoEnviar, validarCPF }) {
                     setNome(event.target.value);
                 }}
                 label = "Nome" 
+                required
                 variant = "outlined" 
                 id = "nome" 
                 margin = "dense" 
@@ -35,6 +36,7 @@ function DadosPessoais({ aoEnviar, validarCPF }) {
                     setSobrenome(event.target.value);
                 }}
                 label = "Sobrenome" 
+                required
                 variant = "outlined" 
                 id = "sobrenome" 
                 margin = "dense" 
@@ -47,6 +49,7 @@ function DadosPessoais({ aoEnviar, validarCPF }) {
                     setCpf(event.target.value);
                 }}
                 label = "CPF" 
+                required
                 variant = "outlined" 
                 onBlur = {event => {
                         const ehValido = validarCPF(cpf);
