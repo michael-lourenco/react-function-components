@@ -7,7 +7,16 @@ function DadosPessoais({ aoEnviar, validacoes }) {
     const [cpf, setCpf] = useState("");
     const [promocoes, setPromocoes] = useState(true);
     const [novidades, setNovidades] = useState(false);
-    const [errors, setErrors] = useState({ cpf: { valido: true, texto: ""} });
+    const [errors, setErrors] = useState({ 
+        cpf: { 
+            valido: true, 
+            texto: ""
+        }, 
+        nome: { 
+            valido: true, 
+            texto: ""
+        }
+    });
 
     function validarCampos(event) {
         const { name, value } = event.target;
@@ -16,11 +25,22 @@ function DadosPessoais({ aoEnviar, validacoes }) {
         setErrors(novoEstado);
     }
 
+    function possoEnviar(){
+        for(let campo in errors){
+            if(!errors[campo].valido){
+                return false;
+            }
+        }
+        return true;
+    }
+
     return (
         <form 
             onSubmit = {event => {
                 event.preventDefault();
-                aoEnviar({ nome, sobrenome, cpf, promocoes, novidades });
+                if(possoEnviar()) {
+                    aoEnviar({ nome, sobrenome, cpf, promocoes, novidades });
+                } 
             }
         }>
 
@@ -29,7 +49,11 @@ function DadosPessoais({ aoEnviar, validacoes }) {
                 onChange = {event => {                
                     setNome(event.target.value);
                 }}
+                onBlur = { validarCampos }
+                error = { !errors.nome.valido }
+                helperText = { errors.nome.texto }
                 label = "Nome" 
+                name = "nome"
                 required
                 variant = "outlined" 
                 id = "nome" 
@@ -43,6 +67,7 @@ function DadosPessoais({ aoEnviar, validacoes }) {
                     setSobrenome(event.target.value);
                 }}
                 label = "Sobrenome" 
+                name = "sobrenome"
                 required
                 variant = "outlined" 
                 id = "sobrenome" 
@@ -101,7 +126,7 @@ function DadosPessoais({ aoEnviar, validacoes }) {
                 type = "submit"
                 variant = "contained"
                 color = "primary"
-            >Cadastrar</Button>
+            >Próximo</Button>
 
         </form>
     );

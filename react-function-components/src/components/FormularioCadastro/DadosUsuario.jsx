@@ -1,14 +1,33 @@
 import React, { useState } from 'react';
 import { Button, TextField } from '@material-ui/core';
 
-function DadosUsuario({ aoEnviar }){
+function DadosUsuario({ aoEnviar, validacoes }){
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
+    const [errors, setErrors] = useState({ senha: { valido: true, texto: ""} });
+
+    function validarCampos(event) {
+        const { name, value } = event.target;
+        const novoEstado  = { ...errors };
+        novoEstado[name] = validacoes[name](value);
+        setErrors(novoEstado);
+    }
+
+    function possoEnviar(){
+        for(let campo in errors){
+            if(!errors[campo].valido){
+                return false;
+            }
+        }
+        return true;
+    }
 
     return (
         <form onSubmit = { event => {
             event.preventDefault();
-            aoEnviar({ email, senha });
+            if(possoEnviar()) {
+                aoEnviar({ email, senha });
+            }
         }}>
             <TextField  
                 value = { email }
@@ -17,6 +36,7 @@ function DadosUsuario({ aoEnviar }){
                 }}
                 type = "email"
                 label = "email" 
+                name = "email"
                 required
                 variant = "outlined" 
                 id = "email" 
@@ -29,8 +49,12 @@ function DadosUsuario({ aoEnviar }){
                 onChange = {event => {
                     setSenha(event.target.value);
                 }}
+                onBlur = { validarCampos }
+                error = { !errors.senha.valido }
+                helperText = { errors.senha.texto }
                 type = "password"
                 label = "senha" 
+                name = "senha"
                 required
                 variant = "outlined" 
                 id = "senha" 
@@ -42,7 +66,7 @@ function DadosUsuario({ aoEnviar }){
                 type = "submit" 
                 color = "primary"
                 variant = "contained"
-            >Cadastrar</Button>
+            >Próximo</Button>
         </form>
     );
 }

@@ -19,6 +19,7 @@ function DadosEntrega({ aoEnviar }){
                 }}
                 type = "number"
                 label = "cep" 
+                name = "cep"
                 variant = "outlined" 
                 id = "cep" 
                 margin = "dense" 
@@ -31,6 +32,7 @@ function DadosEntrega({ aoEnviar }){
                 }}
                 type = "text"
                 label = "Endereço" 
+                name = "endereco"
                 variant = "outlined" 
                 id = "endereco" 
                 margin = "dense" 
@@ -44,6 +46,7 @@ function DadosEntrega({ aoEnviar }){
                 }}
                 type = "number"
                 label = "Número" 
+                name = "numero"
                 variant = "outlined" 
                 id = "numero" 
                 margin = "dense" 
@@ -56,6 +59,7 @@ function DadosEntrega({ aoEnviar }){
                 }}
                 type = "text"
                 label = "Estado" 
+                name = "estado"
                 variant = "outlined" 
                 id = "estado" 
                 margin = "dense" 
@@ -68,6 +72,7 @@ function DadosEntrega({ aoEnviar }){
                 }}
                 type = "text"
                 label = "Cidade" 
+                name = "cidade"
                 variant = "outlined" 
                 id = "cidade" 
                 margin = "dense" 
