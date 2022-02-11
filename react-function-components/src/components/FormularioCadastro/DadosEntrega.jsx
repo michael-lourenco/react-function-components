@@ -1,13 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, TextField } from '@material-ui/core';
 
 function DadosEntrega({ aoEnviar }){
+    const [cep, setCep] = useState("");
+    const [endereco, setEndereco] = useState("");
+    const [numero, setNumero] = useState("");
+    const [estado, setEstado] = useState("");
+    const [cidade, setCidade] = useState("");   
     return(
         <form onSubmit = { event => {
             event.preventDefault();
-            aoEnviar();
+            aoEnviar({ cep, endereco, numero, estado, cidade });
         }}>
-            <TextField  
+            <TextField
+                value = { cep }
+                onChange = { event => {
+                    setCep(event.target.value);
+                }}
                 type = "number"
                 label = "cep" 
                 variant = "outlined" 
@@ -16,6 +25,10 @@ function DadosEntrega({ aoEnviar }){
             />
 
             <TextField  
+                value = { endereco }
+                onChange = { event => {
+                    setEndereco(event.target.value);
+                }}
                 type = "text"
                 label = "Endereço" 
                 variant = "outlined" 
@@ -25,6 +38,10 @@ function DadosEntrega({ aoEnviar }){
             />
 
             <TextField  
+                value = { numero }
+                onChange = { event => {
+                    setNumero(event.target.value);
+                }}
                 type = "number"
                 label = "Número" 
                 variant = "outlined" 
@@ -33,6 +50,10 @@ function DadosEntrega({ aoEnviar }){
             />
             
             <TextField  
+                value = { estado }
+                onChange = { event => {
+                    setEstado(event.target.value);
+                }}
                 type = "text"
                 label = "Estado" 
                 variant = "outlined" 
@@ -41,6 +62,10 @@ function DadosEntrega({ aoEnviar }){
             />
 
             <TextField  
+                value = { cidade }
+                onChange = { event => {
+                    setCidade(event.target.value);
+                }}
                 type = "text"
                 label = "Cidade" 
                 variant = "outlined" 
